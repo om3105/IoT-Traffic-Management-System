@@ -1,0 +1,8 @@
+path: /Users/omchandrakantdeo/Developer/C2W/IoT/Project/training/dataset
+train: images/train
+val: images/val
+
+nc: 2
+names:
+  0: vehicle
+  1: ambulance

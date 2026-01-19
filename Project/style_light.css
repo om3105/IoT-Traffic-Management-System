@@ -1,0 +1,70 @@
+:root {
+    --bg-app: #eef2f6;
+    --bg-grid: rgba(0, 0, 0, 0.08);
+    --text-main: #1a1c24;
+    --text-header: #000000;
+    --text-sub: #444444;
+    --glass-bg: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(0, 0, 0, 0.15);
+    --glass-shadow: rgba(0, 0, 0, 0.1);
+    --pole-bg: #d4d4d4;
+    --bulb-off: #333;
+    --ring-bg: rgba(255, 255, 255, 0.5);
+    --metric-bg: #ffffff;
+    --btn-border: #cccccc;
+    --btn-text: #1a1c24;
+    --btn-bg: #ffffff;
+    --neon-green: #008855;
+    --neon-red: #bb0033;
+    --neon-yellow: #bb9900;
+
+    --status-stop-border: rgba(187, 0, 51, 0.8);
+    --status-stop-glow: rgba(187, 0, 51, 0.15);
+    --status-go-border: rgba(0, 136, 85, 0.8);
+    --status-go-glow: rgba(0, 136, 85, 0.15);
+    --status-slow-border: rgba(187, 153, 0, 0.8);
+    --status-slow-glow: rgba(187, 153, 0, 0.15);
+}
+
+h1 {
+    background: linear-gradient(90deg, #000000, #00995c) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    text-shadow: none !important;
+}
+
+p,
+.stMarkdown,
+.stToggle p,
+label,
+div[data-testid="stWidgetLabel"] p {
+    color: #1a1c24 !important;
+}
+
+/* Light Mode Button Overrides */
+button {
+    background-color: var(--btn-bg) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Light Mode Toggle Switch Override - Force Black Track */
+div[data-testid="stToggle"] label>div:nth-child(1) {
+    background-color: #000000 !important;
+    color: #000000 !important;
+    border: 1px solid #000000 !important;
+}
+
+div[data-testid="stToggle"] label>div:nth-child(1)>div {
+    background-color: #000000 !important;
+}
+
+/* Fallback for role-based if structure differs */
+div[data-testid="stToggle"] div[role="switch"] {
+    background-color: #000000 !important;
+    border: 1px solid #000000 !important;
+}
+
+div[data-testid="stToggle"] div[role="switch"] div {
+    background-color: #ffffff !important;
+}

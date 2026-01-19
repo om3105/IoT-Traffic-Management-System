@@ -1,0 +1,290 @@
+/* ==========================================================================
+   VYBE CREW | CYBERPUNK GLASSMORPHISM UI - v2.0
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+    /* DEFAULT DARK THEME VARIABLES */
+    --font-heading: 'Outfit', sans-serif;
+    /* Resembles Google Sans */
+    --font-body: 'Roboto', sans-serif;
+    /* Standard Google Body Font */
+
+    --neon-green: #00ff9d;
+    --neon-red: #ff0055;
+    --neon-yellow: #ffcc00;
+
+    --bg-app: #050511;
+    --bg-grid: rgba(0, 255, 157, 0.03);
+
+    --text-main: #e0e0e0;
+    --text-header: #ffffff;
+    --text-sub: #aaaaaa;
+
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-shadow: rgba(0, 0, 0, 0.5);
+
+    --pole-bg: #111;
+    --bulb-off: #222;
+    --ring-bg: rgba(0, 0, 0, 0.4);
+
+    --metric-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+    --btn-border: rgba(255, 255, 255, 0.2);
+    --btn-text: #fff;
+    --status-stop-border: rgba(255, 0, 85, 0.5);
+    --status-stop-glow: rgba(255, 0, 85, 0.2);
+    --status-go-border: rgba(0, 255, 157, 0.5);
+    --status-go-glow: rgba(0, 255, 157, 0.2);
+    --status-slow-border: rgba(255, 204, 0, 0.5);
+    --status-slow-glow: rgba(255, 204, 0, 0.2);
+}
+
+/* --- GLOBAL LAYOUT --- */
+.stApp {
+    background-color: var(--bg-app);
+    background-image:
+        linear-gradient(var(--bg-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px);
+    background-size: 40px 40px;
+    color: var(--text-main);
+    font-family: var(--font-body);
+}
+
+/* Hide Generic Streamlit Header/Toolbar */
+header[data-testid="stHeader"] {
+    visibility: hidden;
+    height: 0px;
+}
+
+.stApp>header {
+    visibility: hidden;
+    height: 0px;
+}
+
+/* Compact layout for single-screen view */
+.block-container {
+    padding-top: 0rem !important;
+    padding-bottom: 1rem !important;
+    max-width: 95% !important;
+}
+
+/* --- TYPOGRAPHY --- */
+h1,
+h2,
+h3 {
+    font-family: var(--font-heading) !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-header) !important;
+}
+
+h1 {
+    background: linear-gradient(90deg, var(--text-header), var(--neon-green));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(0, 255, 157, 0.3);
+    font-size: 1.8rem !important;
+}
+
+/* --- GLASS CARD BASE CLASS --- */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 8px 32px 0 var(--glass-shadow);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    min-height: 200px;
+}
+
+.glass-card:hover {
+    background: var(--glass-border);
+    transform: translateY(-2px);
+}
+
+/* --- STATUS STATES (NEON GLOWS) --- */
+.status-stop {
+    border: 1px solid var(--status-stop-border);
+    box-shadow: 0 0 20px var(--status-stop-glow), inset 0 0 20px rgba(255, 0, 85, 0.05);
+}
+
+.status-go {
+    border: 1px solid var(--status-go-border);
+    box-shadow: 0 0 20px var(--status-go-glow), inset 0 0 20px rgba(0, 255, 157, 0.05);
+}
+
+.status-slow {
+    border: 1px solid var(--status-slow-border);
+    box-shadow: 0 0 20px var(--status-slow-glow);
+}
+
+/* --- CARD CONTENT --- */
+.card-header {
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-sub);
+    margin-bottom: 5px;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 4px;
+}
+
+.density-value {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-header);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.density-label {
+    font-size: 0.65rem;
+    color: var(--text-sub);
+    margin-top: -2px;
+    margin-bottom: 8px;
+}
+
+/* --- TRAFFIC LIGHTS --- */
+.pole {
+    background: var(--pole-bg);
+    padding: 6px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border: 1px solid #333;
+    box-shadow: inset 0 0 10px #000;
+}
+
+.bulb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--bulb-off);
+    transition: all 0.2s;
+}
+
+.bulb.red.active {
+    background: var(--neon-red);
+    box-shadow: 0 0 15px var(--neon-red);
+}
+
+.bulb.yellow.active {
+    background: var(--neon-yellow);
+    box-shadow: 0 0 15px var(--neon-yellow);
+}
+
+.bulb.green.active {
+    background: var(--neon-green);
+    box-shadow: 0 0 15px var(--neon-green);
+}
+
+/* --- CENTER TIMER --- */
+.ring-container {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: var(--ring-bg);
+    border: 2px solid var(--glass-border);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    box-shadow: 0 0 30px rgba(0, 255, 157, 0.1);
+}
+
+.time-val {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--text-header);
+    line-height: 1;
+}
+
+.time-label {
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    color: var(--text-sub);
+    margin-bottom: 2px;
+}
+
+.lane-badge {
+    margin-top: 5px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: rgba(0, 255, 157, 0.1);
+    color: var(--neon-green);
+    border: 1px solid var(--neon-green);
+}
+
+/* Ensure contrast in light mode via specific override or better variable usage */
+/* In light mode, glass-bg is whiteish, neon-green text is ok. */
+
+.lane-badge.emergency {
+    background: rgba(255, 0, 85, 0.15);
+    color: var(--neon-red);
+    border-color: var(--neon-red);
+    animation: flash 1s infinite alternate;
+}
+
+@keyframes flash {
+    from {
+        opacity: 0.6;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* --- METRIC BOXES (BOTTOM) --- */
+.metric-box {
+    background: var(--metric-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+}
+
+.metric-val {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--neon-green);
+}
+
+.metric-lbl {
+    font-size: 0.7rem;
+    color: var(--text-sub);
+    margin-top: 2px;
+}
+
+/* --- OVERRIDE BUTTONS --- */
+button {
+    font-family: var(--font-heading) !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px !important;
+    margin-top: 5px !important;
+    font-size: 0.85rem !important;
+    padding: 0.2rem 0.5rem !important;
+    border: 1px solid var(--btn-border) !important;
+    color: var(--btn-text) !important;
+}
