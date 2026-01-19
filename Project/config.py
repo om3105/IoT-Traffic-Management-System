@@ -8,10 +8,11 @@ THINGSPEAK_CHANNEL_ID = "YOUR_CHANNEL_ID"  # Replace with your channel ID
 THINGSPEAK_BASE_URL = "https://api.thingspeak.com/update"
 
 # Camera Configuration
-CAMERA_SOURCE = 0  # 0 for webcam, or IP address for ESP32-CAM (e.g., "http://192.168.1.100:81/stream")
+CAMERA_SOURCE = "http://10.52.250.215/capture"  # 0 for webcam, HTTP URL for web server, or ESP32-CAM IP
 CAPTURE_INTERVAL = 5  # Seconds between captures
 IMAGE_WIDTH = 640
 IMAGE_HEIGHT = 480
+REQUEST_TIMEOUT = 10  # Timeout for HTTP requests in seconds
 
 # Model Configuration
 MODEL_PATH = "Project/custom_model.pt"  # Your YOLO model
